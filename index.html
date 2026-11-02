@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Fortune — Sun Printed Textiles</title>
+    <title>PPAPERFORTUNE — Creative, Digital & Experiential Growth Agency</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --indigo: #1a1a2e;
-            --indigo-light: #16213e;
-            --off-white: #f5f2ed;
-            --paper: #e8e2d9;
-            --charcoal: #0f0f0f;
-            --gray-warm: #8a8279;
-            --gray-light: #c4bdb3;
-            --accent-blue: #2e4a62;
+            --indigo: #1e2421;
+            --indigo-light: #28302c;
+            --off-white: #faf9f6;
+            --paper: #f0eae1;
+            --charcoal: #141715;
+            --gray-warm: #a3b0a7;
+            --gray-light: #d0d7d2;
+            --accent-blue: #c87d55;
         }
 
         * {
@@ -58,7 +58,7 @@
 
         .logo-text {
             font-family: 'Inter', sans-serif;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.35em;
             text-transform: uppercase;
             font-size: 1.1rem;
@@ -87,7 +87,7 @@
         }
 
         .nav-container.scrolled {
-            background: rgba(245, 242, 237, 0.92);
+            background: rgba(250, 249, 246, 0.94);
             backdrop-filter: blur(20px);
             padding: 1.2rem 3rem;
             box-shadow: 0 1px 20px rgba(0,0,0,0.04);
@@ -112,13 +112,12 @@
         }
 
         .nav-logo .logo-script {
-            color: var(--off-white);
+            color: var(--accent-blue);
             font-size: 0.75rem;
             margin-top: -2px;
         }
 
-        .nav-container.scrolled .nav-logo .logo-text,
-        .nav-container.scrolled .nav-logo .logo-script {
+        .nav-container.scrolled .nav-logo .logo-text {
             color: var(--charcoal);
         }
 
@@ -150,7 +149,7 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--charcoal);
+            background: var(--accent-blue);
             transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -207,7 +206,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            background: linear-gradient(135deg, #141715 0%, #1e2421 50%, #28302c 100%);
             opacity: 1;
         }
 
@@ -218,8 +217,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(46, 74, 98, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(26, 26, 46, 0.3) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 50%, rgba(200, 125, 85, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(30, 36, 33, 0.3) 0%, transparent 50%);
             animation: heroPulse 12s ease-in-out infinite;
         }
 
@@ -233,36 +232,39 @@
             z-index: 2;
             text-align: center;
             color: var(--off-white);
+            max-width: 900px;
+            padding: 0 2rem;
         }
 
         .hero-logo {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
         }
 
         .hero-logo .logo-text {
-            font-size: 3.5rem;
-            letter-spacing: 0.5em;
+            font-size: 3.2rem;
+            letter-spacing: 0.4em;
             display: block;
             margin-bottom: 0.5rem;
         }
 
         .hero-logo .logo-script {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             display: block;
-            color: var(--gray-light);
+            color: var(--accent-blue);
         }
 
         .hero-tagline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 300;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--gray-light);
             opacity: 0;
             animation: fadeInUp 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            line-height: 1.4;
         }
 
         .hero-scroll {
@@ -328,9 +330,10 @@
             font-size: 0.7rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: var(--gray-warm);
+            color: var(--accent-blue);
             margin-bottom: 1.5rem;
             display: block;
+            font-weight: 600;
         }
 
         .section-title {
@@ -342,14 +345,14 @@
 
         .section-subtitle {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
             color: var(--gray-warm);
             margin-top: 1rem;
             font-weight: 400;
         }
 
-        /* Featured Works */
+        /* Featured Works / Services */
         .works-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -382,7 +385,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
-            filter: grayscale(20%) contrast(1.05);
+            filter: grayscale(15%) contrast(1.05);
         }
 
         .work-card:hover img {
@@ -396,7 +399,7 @@
             left: 0;
             width: 100%;
             padding: 2rem;
-            background: linear-gradient(to top, rgba(15,15,15,0.8), transparent);
+            background: linear-gradient(to top, rgba(20,23,21,0.95), transparent);
             color: var(--off-white);
             transform: translateY(20px);
             opacity: 0;
@@ -410,13 +413,13 @@
 
         .work-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 400;
             margin-bottom: 0.3rem;
         }
 
         .work-desc {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--gray-light);
             font-style: italic;
         }
@@ -433,7 +436,7 @@
         }
 
         .process-section .section-label {
-            color: var(--gray-warm);
+            color: var(--accent-blue);
         }
 
         .process-grid {
@@ -494,14 +497,14 @@
         }
 
         .philosophy-content {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             text-align: center;
         }
 
         .philosophy-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             line-height: 1.8;
             font-weight: 300;
             color: var(--charcoal);
@@ -515,12 +518,13 @@
         .philosophy-signature {
             margin-top: 3rem;
             font-size: 0.8rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--gray-warm);
+            color: var(--accent-blue);
+            font-weight: 500;
         }
 
-        /* Shop Page */
+        /* Shop / Retainers Page */
         .shop-hero {
             height: 60vh;
             background: var(--charcoal);
@@ -538,7 +542,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(46, 74, 98, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(200, 125, 85, 0.2) 0%, transparent 70%);
         }
 
         .shop-hero-content {
@@ -555,7 +559,7 @@
 
         .shop-hero-content p {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
             color: var(--gray-light);
         }
@@ -602,6 +606,7 @@
             color: var(--charcoal);
             padding: 0.4rem 1rem;
             z-index: 2;
+            font-weight: 500;
         }
 
         .product-details h3 {
@@ -612,17 +617,17 @@
 
         .product-desc {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-style: italic;
             color: var(--gray-warm);
             margin-bottom: 1rem;
         }
 
         .product-price {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             letter-spacing: 0.1em;
-            color: var(--charcoal);
-            font-weight: 500;
+            color: var(--accent-blue);
+            font-weight: 600;
         }
 
         /* Product Detail Page */
@@ -685,7 +690,7 @@
 
         .product-info-panel .poetic-desc {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-style: italic;
             color: var(--gray-warm);
             margin-bottom: 2rem;
@@ -774,7 +779,7 @@
         }
 
         .whatsapp-btn:hover {
-            background: var(--indigo);
+            background: var(--accent-blue);
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
@@ -806,7 +811,7 @@
         }
 
         .about-hero-content {
-            max-width: 700px;
+            max-width: 750px;
             text-align: center;
             color: var(--off-white);
             padding: 0 2rem;
@@ -820,7 +825,7 @@
 
         .about-hero-content p {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             line-height: 1.8;
             font-style: italic;
             color: var(--gray-light);
@@ -857,7 +862,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(30%);
+            filter: grayscale(20%);
             transition: filter 0.6s ease;
         }
 
@@ -866,7 +871,7 @@
         }
 
         .about-text h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1.5rem;
             font-weight: 400;
         }
@@ -894,7 +899,7 @@
 
         .process-page-hero p {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
             color: var(--gray-light);
         }
@@ -916,7 +921,7 @@
         }
 
         .process-detail-item h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
             font-weight: 400;
         }
@@ -953,14 +958,15 @@
         }
 
         .care-card:hover {
-            border-color: rgba(255,255,255,0.3);
+            border-color: rgba(200, 125, 85, 0.4);
             background: rgba(255,255,255,0.03);
         }
 
         .care-icon {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            opacity: 0.7;
+            opacity: 0.8;
+            color: var(--accent-blue);
         }
 
         .care-card h4 {
@@ -1000,7 +1006,7 @@
         }
 
         .footer-brand .logo-script {
-            color: var(--gray-light);
+            color: var(--accent-blue);
             font-size: 0.9rem;
             display: block;
             margin-bottom: 1.5rem;
@@ -1010,7 +1016,7 @@
             font-size: 0.85rem;
             color: var(--gray-warm);
             line-height: 1.6;
-            max-width: 300px;
+            max-width: 320px;
             font-weight: 300;
         }
 
@@ -1204,28 +1210,6 @@
             }
         }
 
-        /* Cart Badge */
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            width: 18px;
-            height: 18px;
-            background: var(--accent-blue);
-            color: var(--off-white);
-            border-radius: 50%;
-            font-size: 0.65rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-        }
-
         /* Loading State */
         .page-transition {
             position: fixed;
@@ -1253,8 +1237,8 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#" onclick="navigateTo('home'); return false;">Home</a>
-        <a href="#" onclick="navigateTo('shop'); return false;">Shop</a>
-        <a href="#" onclick="navigateTo('process'); return false;">Process</a>
+        <a href="#" onclick="navigateTo('shop'); return false;">Retainers</a>
+        <a href="#" onclick="navigateTo('process'); return false;">Services</a>
         <a href="#" onclick="navigateTo('about'); return false;">About</a>
         <a href="#" onclick="navigateTo('contact'); return false;">Contact</a>
     </div>
@@ -1262,13 +1246,13 @@
     <!-- Navigation -->
     <nav class="nav-container" id="navbar">
         <div class="nav-logo" onclick="navigateTo('home')">
-            <span class="logo-text">Paper</span>
+            <span class="logo-text">Ppaper</span>
             <span class="logo-script">Fortune</span>
         </div>
         <ul class="nav-links">
             <li><a href="#" onclick="navigateTo('home'); return false;">Home</a></li>
-            <li><a href="#" onclick="navigateTo('shop'); return false;">Shop</a></li>
-            <li><a href="#" onclick="navigateTo('process'); return false;">Process</a></li>
+            <li><a href="#" onclick="navigateTo('shop'); return false;">Retainers</a></li>
+            <li><a href="#" onclick="navigateTo('process'); return false;">Services</a></li>
             <li><a href="#" onclick="navigateTo('about'); return false;">About</a></li>
             <li><a href="#" onclick="navigateTo('contact'); return false;">Contact</a></li>
         </ul>
@@ -1285,83 +1269,83 @@
             <div class="hero-bg"></div>
             <div class="hero-content">
                 <div class="hero-logo">
-                    <span class="logo-text">Paper</span>
+                    <span class="logo-text">Ppaper</span>
                     <span class="logo-script">Fortune</span>
                 </div>
-                <p class="hero-tagline">Objects Exposed By Light</p>
+                <p class="hero-tagline">Bringing Bengaluru's Finest Cafés to Every Student's Feed & Table</p>
             </div>
             <div class="hero-scroll">
-                <span>Scroll</span>
+                <span>Explore Agency</span>
                 <div class="scroll-line"></div>
             </div>
         </section>
 
-        <!-- Featured Works -->
+        <!-- Featured Works / Core Deliverables -->
         <section class="section">
             <div class="container">
                 <div class="section-header reveal">
-                    <span class="section-label">Selected Works</span>
-                    <h2 class="section-title">The Archive</h2>
-                    <p class="section-subtitle">One-of-a-kind cyanotype textiles, sun-printed by hand</p>
+                    <span class="section-label">Core Pillars</span>
+                    <h2 class="section-title">Visual & Experiential Growth</h2>
+                    <p class="section-subtitle">Combining high-aesthetic content with real-world footfall drivers</p>
                 </div>
                 <div class="works-grid">
-                    <div class="work-card reveal" onclick="showProduct('botanical-tote')">
-                        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80" alt="Botanical Tote">
+                    <div class="work-card reveal" onclick="showProduct('starter-vibe')">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Content & Photography">
                         <div class="work-info">
-                            <h3 class="work-title">Botanical Tote</h3>
-                            <p class="work-desc">Fern impressions on organic cotton</p>
+                            <h3 class="work-title">4K Reels & Photography</h3>
+                            <p class="work-desc">Ambient food, interior, and barista storytelling</p>
                         </div>
                     </div>
-                    <div class="work-card reveal" onclick="showProduct('shadow-scarf')">
-                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80" alt="Shadow Scarf">
+                    <div class="work-card reveal" onclick="showProduct('growth-reach')">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Events & Activations">
                         <div class="work-info">
-                            <h3 class="work-title">Shadow Scarf</h3>
-                            <p class="work-desc">Silk crepe de chine, leaf silhouettes</p>
+                            <h3 class="work-title">Café Events & Jams</h3>
+                            <p class="work-desc">Live acoustic music sessions & student open mics</p>
                         </div>
                     </div>
-                    <div class="work-card reveal" onclick="showProduct('archive-shirt')">
-                        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80" alt="Archive Shirt">
+                    <div class="work-card reveal" onclick="showProduct('full-experiential')">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80" alt="Web & Google SEO">
                         <div class="work-info">
-                            <h3 class="work-title">Archive Shirt</h3>
-                            <p class="work-desc">Limited edition, hand-coated linen</p>
+                            <h3 class="work-title">Digital Presence & SEO</h3>
+                            <p class="work-desc">Custom mobile menus & Google Maps review domination</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Process -->
+        <!-- Process / Growth Formula -->
         <section class="process-section">
             <div class="container">
                 <div class="section-header reveal">
                     <span class="section-label">The Method</span>
-                    <h2 class="section-title">From Light to Fabric</h2>
+                    <h2 class="section-title">The Closed-Loop Vibe Formula</h2>
                 </div>
                 <div class="process-grid">
                     <div class="process-step reveal">
                         <div class="step-number">01</div>
-                        <h4 class="step-title">Coating</h4>
-                        <p class="step-desc">Light-sensitive emulsion hand-brushed onto fabric in dim light</p>
+                        <h4 class="step-title">Batch Shoot</h4>
+                        <p class="step-desc">On-location 4K photography and high-converting reel production</p>
                     </div>
                     <div class="process-step reveal">
                         <div class="step-number">02</div>
-                        <h4 class="step-title">Placement</h4>
-                        <p class="step-desc">Botanicals and objects arranged with intention and care</p>
+                        <h4 class="step-title">Feed Curation</h4>
+                        <p class="step-desc">Strategic Instagram grid publishing, trending audio, and student captions</p>
                     </div>
                     <div class="process-step reveal">
                         <div class="step-number">03</div>
-                        <h4 class="step-title">Exposure</h4>
-                        <p class="step-desc">Sunlight imprints shadows and forms onto the prepared surface</p>
+                        <h4 class="step-title">Google Maps SEO</h4>
+                        <p class="step-desc">Optimizing search rankings & on-table QR review capture systems</p>
                     </div>
                     <div class="process-step reveal">
                         <div class="step-number">04</div>
-                        <h4 class="step-title">Washing</h4>
-                        <p class="step-desc">Water reveals the Prussian blue, fixing the image forever</p>
+                        <h4 class="step-title">Creator Visits</h4>
+                        <p class="step-desc">Coordinated influencer dining sessions with local Bengaluru foodies</p>
                     </div>
                     <div class="process-step reveal">
                         <div class="step-number">05</div>
-                        <h4 class="step-title">Oxidation</h4>
-                        <p class="step-desc">Air and time deepen the blue to its final, living shade</p>
+                        <h4 class="step-title">Live Events</h4>
+                        <p class="step-desc">Hosting acoustic nights & open mics to convert online followers into footfall</p>
                     </div>
                 </div>
             </div>
@@ -1372,98 +1356,99 @@
             <div class="container">
                 <div class="philosophy-content reveal">
                     <div class="philosophy-text">
-                        <p>Every piece carries the memory of a specific day — the quality of light, the humidity in the air, the particular fall of a shadow. We do not chase perfection. We chase presence.</p>
-                        <p>Each textile is a collaboration between human intention and natural unpredictability. The sun decides; we merely prepare the canvas.</p>
+                        <p>We believe cafés aren't just places to grab coffee — they are community hubs. Traditional social media management fails because it focuses only on generic posts.</p>
+                        <p>PPAPERFORTUNE acts as a complete growth partner, connecting high-aesthetic digital content directly with real-world student culture around Presidency University.</p>
                     </div>
-                    <div class="philosophy-signature">Slow Made • Small Batch • Sun Printed</div>
+                    <div class="philosophy-signature">Aesthetic Content • Local SEO • Experiential Events</div>
                 </div>
             </div>
         </section>
 
-        <!-- Instagram -->
+        <!-- Instagram Showcase -->
         <section class="section" style="padding-bottom: 4rem;">
             <div class="container">
                 <div class="section-header reveal">
-                    <span class="section-label">Journal</span>
-                    <h2 class="section-title">@paperfortune</h2>
-                    <p class="section-subtitle">Behind the scenes in our studio</p>
+                    <span class="section-label">Portfolio</span>
+                    <h2 class="section-title">@ppaperfortune</h2>
+                    <p class="section-subtitle">Visual highlights from our partner cafés</p>
                 </div>
                 <div class="works-grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem;">
                     <div class="work-card reveal" style="aspect-ratio: 1;">
-                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&q=80" alt="Studio">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" alt="Coffee Aesthetic">
                     </div>
                     <div class="work-card reveal" style="aspect-ratio: 1;">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Fabric">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=80" alt="Cafe Interior">
                     </div>
                     <div class="work-card reveal" style="aspect-ratio: 1;">
-                        <img src="https://images.unsplash.com/photo-1493934558415-9d19f0b2b4d2?w=600&q=80" alt="Botanicals">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80" alt="Acoustic Session">
                     </div>
                     <div class="work-card reveal" style="aspect-ratio: 1;">
-                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=600&q=80" alt="Light">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="Pour Over">
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- SHOP PAGE -->
+    <!-- SHOP / RETAINERS PAGE -->
     <div class="page" id="page-shop">
         <div class="shop-hero">
             <div class="shop-hero-content">
-                <h1>The Collection</h1>
-                <p>Curated pieces, each one unique</p>
+                <h1>Monthly Retainers</h1>
+                <p>Structured packages engineered for café footfall & brand prestige</p>
             </div>
         </div>
         <div class="container">
             <div class="shop-grid">
-                <div class="product-card reveal" onclick="showProduct('botanical-tote')">
+                <div class="product-card reveal" onclick="showProduct('starter-vibe')">
                     <div class="product-image">
-                        <span class="product-tag">New</span>
-                        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80" alt="Botanical Tote">
+                        <span class="product-tag">Tier 1</span>
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Starter Vibe">
                     </div>
                     <div class="product-details">
-                        <h3>Botanical Tote</h3>
-                        <p class="product-desc">Pressed ferns on heavy organic cotton</p>
-                        <span class="product-price">$85.00</span>
+                        <h3>Tier 1: Starter Vibe</h3>
+                        <p class="product-desc">Essential social media presence & Google SEO setup</p>
+                        <span class="product-price">₹12,000 – ₹15,000 / month</span>
                     </div>
                 </div>
-                <div class="product-card reveal" onclick="showProduct('shadow-scarf')">
+                <div class="product-card reveal" onclick="showProduct('growth-reach')">
                     <div class="product-image">
-                        <span class="product-tag">Limited</span>
-                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80" alt="Shadow Scarf">
+                        <span class="product-tag">Most Popular</span>
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Growth & Reach">
                     </div>
                     <div class="product-details">
-                        <h3>Shadow Scarf</h3>
-                        <p class="product-desc">Silk crepe with wild botanical silhouettes</p>
-                        <span class="product-price">$120.00</span>
+                        <h3>Tier 2: Growth & Reach</h3>
+                        <p class="product-desc">12 Reels/mo, Influencer Visit & FREE Digital Menu Web App</p>
+                        <span class="product-price">₹20,000 – ₹25,000 / month</span>
                     </div>
                 </div>
-                <div class="product-card reveal" onclick="showProduct('archive-shirt')">
+                <div class="product-card reveal" onclick="showProduct('full-experiential')">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80" alt="Archive Shirt">
+                        <span class="product-tag">Tier 3</span>
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80" alt="Full Experiential">
                     </div>
                     <div class="product-details">
-                        <h3>Archive Shirt</h3>
-                        <p class="product-desc">Hand-coated linen, edition of 12</p>
-                        <span class="product-price">$195.00</span>
+                        <h3>Tier 3: Full Experiential</h3>
+                        <p class="product-desc">20 Reels/mo, Weekly Shoots & Live Event Activations</p>
+                        <span class="product-price">₹35,000 – ₹40,000 / month</span>
                     </div>
                 </div>
-                <div class="product-card reveal" onclick="showProduct('paper-obj')">
+                <div class="product-card reveal" onclick="showProduct('digital-menu')">
                     <div class="product-image">
-                        <span class="product-tag">One-off</span>
-                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=800&q=80" alt="Paper Object">
+                        <span class="product-tag">Add-On</span>
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80" alt="Digital Menu Web App">
                     </div>
                     <div class="product-details">
-                        <h3>Paper Object No. 7</h3>
-                        <p class="product-desc">Cyanotype on handmade washi paper</p>
-                        <span class="product-price">$75.00</span>
+                        <h3>Digital Menu & Table QR Setup</h3>
+                        <p class="product-desc">Custom mobile website, location map, & WhatsApp order link</p>
+                        <span class="product-price">₹10,000 (One-Time Setup)</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PRODUCT DETAIL PAGE -->
+    <!-- PRODUCT DETAIL / RETAINER MODAL PAGE -->
     <div class="page" id="page-product">
         <div class="product-detail">
             <div class="product-detail-hero">
@@ -1471,30 +1456,26 @@
                     <img id="product-img" src="" alt="">
                 </div>
                 <div class="product-info-panel">
-                    <button class="back-btn" onclick="navigateTo('shop')">← Back to Collection</button>
-                    <h1 id="product-name">Product Name</h1>
+                    <button class="back-btn" onclick="navigateTo('shop')">← Back to Retainers</button>
+                    <h1 id="product-name">Package Name</h1>
                     <p class="poetic-desc" id="product-poetic">Description</p>
                     
                     <div class="product-meta">
                         <div class="meta-item">
-                            <span class="meta-label">Material</span>
-                            <span class="meta-value" id="product-material">Cotton</span>
+                            <span class="meta-label">Deliverables</span>
+                            <span class="meta-value" id="product-material">Reels & Photos</span>
                         </div>
                         <div class="meta-item">
-                            <span class="meta-label">Process</span>
-                            <span class="meta-value">Cyanotype on fabric</span>
+                            <span class="meta-label">Shoots</span>
+                            <span class="meta-value" id="product-dims">Monthly Sessions</span>
                         </div>
                         <div class="meta-item">
-                            <span class="meta-label">Dimensions</span>
-                            <span class="meta-value" id="product-dims">40 x 40 cm</span>
+                            <span class="meta-label">Commitment</span>
+                            <span class="meta-value" id="product-edition">3-Month Agreement</span>
                         </div>
                         <div class="meta-item">
-                            <span class="meta-label">Edition</span>
-                            <span class="meta-value" id="product-edition">One of a kind</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Price</span>
-                            <span class="meta-value" id="product-price">$0.00</span>
+                            <span class="meta-label">Investment</span>
+                            <span class="meta-value" id="product-price">₹0.00</span>
                         </div>
                     </div>
 
@@ -1505,118 +1486,128 @@
                             <button class="qty-btn" onclick="changeQty(1)">+</button>
                         </div>
                         <button class="whatsapp-btn" onclick="orderViaWhatsApp()">
-                            Order via WhatsApp
+                            Inquire via WhatsApp
                         </button>
                     </div>
 
                     <div class="care-note">
-                        <strong>Living Print</strong>
-                        This piece will evolve over time. The blue may gently soften with washes and sun exposure — this is the natural character of cyanotype, not a flaw. Each fade tells the story of its life with you.
+                        <strong>Founding Client Guarantee</strong>
+                        Every retainer includes dedicated on-site content batching, custom brand alignment, and direct communication with our founding leadership team in Bengaluru.
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ABOUT PAGE -->
+    <!-- ABOUT PAGE / TEAM LEADERSHIP -->
     <div class="page" id="page-about">
         <div class="about-hero">
             <div class="about-hero-content">
-                <h1>The Studio</h1>
-                <p>We work with sunlight as our primary medium, allowing the unpredictable nature of exposure to guide each piece toward its final form.</p>
+                <h1>About PPAPERFORTUNE</h1>
+                <p>An emerging creative, digital marketing, and experiential growth agency initially focused exclusively on the café culture in Bengaluru.</p>
             </div>
         </div>
         <div class="container about-content">
             <div class="about-grid reveal">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&q=80" alt="Studio Process">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Leadership Operations">
                 </div>
                 <div class="about-text">
-                    <h3>Sun as Printer</h3>
-                    <p>The cyanotype process was invented in 1842 by Sir John Herschel. We have adapted this photographic technique to textiles, creating wearable blueprints that carry the ghost of botanical forms.</p>
-                    <p>Each morning, we coat fabric with iron salts in near-darkness. By afternoon, the sun has done its work. By evening, water reveals what light has written.</p>
+                    <h3>Manav</h3>
+                    <span style="color: var(--accent-blue); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 1rem;">Managing Partner & Digital Operations Lead</span>
+                    <p>Oversees agency strategy, overall business operations, custom web platforms, and Google local SEO systems.</p>
                 </div>
             </div>
             <div class="about-grid reverse reveal">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=800&q=80" alt="Botanicals">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80" alt="Photography Production">
                 </div>
                 <div class="about-text">
-                    <h3>Botanical Collaboration</h3>
-                    <p>We collect specimens during specific seasons — ferns in spring, seed heads in autumn, eucalyptus year-round. Each plant leaves its signature differently depending on the day's UV intensity.</p>
-                    <p>The arrangement is never fully controlled. Wind shifts a leaf. A cloud passes. These accidents become the most beautiful passages.</p>
+                    <h3>Abdul</h3>
+                    <span style="color: var(--accent-blue); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 1rem;">Creative Director & Head of Production</span>
+                    <p>Directs visual storytelling, food & ambient photography, videography, cinematic reel edits, and production quality control.</p>
                 </div>
             </div>
             <div class="about-grid reveal">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1493934558415-9d19f0b2b4d2?w=800&q=80" alt="Textile">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="Client Partnerships">
                 </div>
                 <div class="about-text">
-                    <h3>Imperfection as Value</h3>
-                    <p>In an age of mass production, we choose slowness. A single piece may take three days from coating to finished object. We embrace the brush marks, the uneven edges, the slight variations that prove human hands were involved.</p>
-                    <p>No two pieces will ever be identical. Even if we tried, the sun would refuse to cooperate.</p>
+                    <h3>Vinay</h3>
+                    <span style="color: var(--accent-blue); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 1rem;">Client Partnerships & Success Lead</span>
+                    <p>Manages client relations, business development, on-site meetings, proposal presentations, and onboarding.</p>
+                </div>
+            </div>
+            <div class="about-grid reverse reveal">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80" alt="Social Media Community">
+                </div>
+                <div class="about-text">
+                    <h3>Dhanush</h3>
+                    <span style="color: var(--accent-blue); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 1rem;">Social Media & Community Strategist</span>
+                    <p>Drives Instagram handle management, posting schedules, copywritten captions, trending audio, and audience growth.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PROCESS / CARE PAGE -->
+    <!-- PROCESS / SERVICES PAGE -->
     <div class="page" id="page-process">
         <div class="process-page-hero">
             <div class="container">
-                <span class="section-label" style="color: var(--gray-warm);">Understanding the Medium</span>
-                <h1>Cyanotype & Care</h1>
-                <p>A living process that continues to breathe after it leaves our studio</p>
+                <span class="section-label" style="color: var(--gray-warm);">Full Agency Capabilities</span>
+                <h1>Our Core Services</h1>
+                <p>Tailored solutions built specifically for Bengaluru's food & beverage industry</p>
             </div>
         </div>
         <div class="container process-detail">
             <div class="process-detail-grid">
                 <div class="process-detail-item reveal">
-                    <h3>What is Cyanotype?</h3>
-                    <p>A photographic printing process that produces a cyan-blue print. The technique uses a mixture of iron compounds, which when exposed to UV light and washed in water, create the distinctive Prussian blue pigment. Invented in 1842, it was originally used to reproduce notes and diagrams — hence "blueprint."</p>
+                    <h3>1. Content Creation & Production</h3>
+                    <p>Professional café interior, ambiance, food & beverage photography. Cinematic promotional videos, 4K short-form reels, and brand storytelling visuals for seasonal menu launches.</p>
                 </div>
                 <div class="process-detail-item reveal">
-                    <h3>Why Every Piece is Unique</h3>
-                    <p>Sun intensity, humidity, cloud cover, and the specific chemistry of each coating session all influence the final result. We cannot replicate conditions exactly, even if we wished to. This means your piece is truly one-of-a-kind, carrying the specific atmospheric conditions of its creation day.</p>
+                    <h3>2. Social Media & Community Growth</h3>
+                    <p>End-to-end Instagram handle management, aesthetic grid curation, publishing schedules, copywritten captions, trending audio selection, and active DM engagement.</p>
                 </div>
             </div>
             <div class="process-detail-grid">
                 <div class="process-detail-item reveal">
-                    <h3>The Beauty of Fading</h3>
-                    <p>Cyanotype is light-sensitive by nature. Prolonged exposure to strong direct sunlight will gradually soften the blue. We view this not as degradation, but as evolution — the textile developing a patina that reflects its life with you. Many collectors specifically seek out the softer, weathered tones that develop over years.</p>
+                    <h3>3. Website & Google Maps SEO</h3>
+                    <p>Custom high-speed café websites, digital mobile menus, table-top QR code menu integration, and Google Business Profile optimization for local search domination.</p>
                 </div>
                 <div class="process-detail-item reveal">
-                    <h3>Restoring the Blue</h3>
-                    <p>If you wish to temporarily deepen the color, storing the piece in a dark drawer for several days will allow the blue to regenerate. This reversibility is part of cyanotype's magic — it is never truly finished, always in dialogue with its environment.</p>
+                    <h3>4. Creator & Influencer Collaborations</h3>
+                    <p>Strategic matching with local food, lifestyle, and student creators in Bengaluru. Organizing hosted tasting visits, food reviews, and co-branded reel campaigns.</p>
                 </div>
             </div>
         </div>
         <div class="care-section">
             <div class="container">
                 <div class="section-header reveal">
-                    <span class="section-label" style="color: var(--gray-warm);">Preservation</span>
-                    <h2 class="section-title">Care Instructions</h2>
+                    <span class="section-label" style="color: var(--gray-warm);">Offline Footfall Drivers</span>
+                    <h2 class="section-title">Café Event Activations</h2>
                 </div>
                 <div class="care-grid">
                     <div class="care-card reveal">
-                        <div class="care-icon">◦</div>
-                        <h4>Cold Wash</h4>
-                        <p>Hand wash or machine wash on cold gentle cycle. Hot water will accelerate fading.</p>
+                        <div class="care-icon">♫</div>
+                        <h4>Acoustic Sessions</h4>
+                        <p>Live acoustic guitar and vocalist performances curated for weekend dining.</p>
                     </div>
                     <div class="care-card reveal">
-                        <div class="care-icon">◦</div>
-                        <h4>Gentle Detergent</h4>
-                        <p>Use pH-neutral soap. Avoid bleach, optical brighteners, and harsh chemicals entirely.</p>
+                        <div class="care-icon">🎙</div>
+                        <h4>Open Mic Nights</h4>
+                        <p>Student community talent showcases, poetry readings, and jamming sessions.</p>
                     </div>
                     <div class="care-card reveal">
-                        <div class="care-icon">◦</div>
-                        <h4>Shade Dry</h4>
-                        <p>Dry flat in shade. Direct sun during drying will cause immediate color shift.</p>
+                        <div class="care-icon">✦</div>
+                        <h4>Creator Meets</h4>
+                        <p>Hosted influencer dining experiences and social media tasting pop-ups.</p>
                     </div>
                     <div class="care-card reveal">
-                        <div class="care-icon">◦</div>
-                        <h4>Store Dark</h4>
-                        <p>When not in use, store away from direct sunlight to preserve the depth of blue.</p>
+                        <div class="care-icon">📷</div>
+                        <h4>Live Coverage</h4>
+                        <p>End-to-end event planning, ticketing, promotion, and highlight reel generation.</p>
                     </div>
                 </div>
             </div>
@@ -1628,28 +1619,24 @@
         <div class="about-hero" style="height: 50vh;">
             <div class="about-hero-content">
                 <h1>Get in Touch</h1>
-                <p>Every inquiry begins a conversation</p>
+                <p>Let's elevate your café's reach and offline footfall</p>
             </div>
         </div>
-        <div class="container" style="padding: 6rem 0; max-width: 600px; text-align: center;">
+        <div class="container" style="padding: 6rem 0; max-width: 650px; text-align: center;">
             <div class="reveal">
-                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; line-height: 1.8; color: var(--gray-warm); margin-bottom: 3rem; font-style: italic;">
-                    For orders, custom commissions, or simply to say hello — we read every message and respond within 24 hours.
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; line-height: 1.8; color: var(--gray-warm); margin-bottom: 3rem; font-style: italic;">
+                    Ready to transform your café into Bengaluru's next student hotspot? Connect with our team today for a shoot strategy call.
                 </p>
                 <div style="margin-bottom: 2rem;">
-                    <span style="display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-warm); margin-bottom: 0.5rem;">WhatsApp</span>
-                    <a href="https://wa.me/1234567890" style="font-size: 1.1rem; color: var(--charcoal); text-decoration: none; font-weight: 500;">+1 (234) 567-890</a>
+                    <span style="display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 0.5rem; font-weight: 600;">WhatsApp Business</span>
+                    <a href="https://wa.me/?text=Hi%20PPAPERFORTUNE%20team,%20we%20want%20to%20discuss%20a%20marketing%20strategy%20for%20our%20cafe." style="font-size: 1.2rem; color: var(--charcoal); text-decoration: none; font-weight: 500;">Chat with Vinay (Partnerships Lead)</a>
                 </div>
                 <div style="margin-bottom: 2rem;">
-                    <span style="display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-warm); margin-bottom: 0.5rem;">Email</span>
-                    <a href="mailto:hello@paperfortune.studio" style="font-size: 1.1rem; color: var(--charcoal); text-decoration: none; font-weight: 500;">hello@paperfortune.studio</a>
-                </div>
-                <div style="margin-bottom: 2rem;">
-                    <span style="display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-warm); margin-bottom: 0.5rem;">Studio</span>
-                    <span style="font-size: 1rem; color: var(--charcoal);">Based in the Pacific Northwest</span>
+                    <span style="display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 0.5rem; font-weight: 600;">Location & Focus</span>
+                    <span style="font-size: 1.1rem; color: var(--charcoal);">Bengaluru, India (Presidency University Hub)</span>
                 </div>
                 <div style="margin-top: 3rem;">
-                    <a href="https://instagram.com/paperfortune" style="display: inline-block; padding: 1rem 2rem; border: 1px solid var(--paper); color: var(--charcoal); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s ease;">Follow @paperfortune</a>
+                    <a href="https://wa.me/?text=Hi%20PPAPERFORTUNE,%20I'd%20like%20to%20book%20a%20strategy%20call." style="display: inline-block; padding: 1rem 2rem; border: 1px solid var(--accent-blue); color: var(--charcoal); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s ease;">Book Strategy Session</a>
                 </div>
             </div>
         </div>
@@ -1660,76 +1647,74 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="logo-text">Paper</span>
+                    <span class="logo-text">Ppaper</span>
                     <span class="logo-script">Fortune</span>
-                    <p>Sun-printed textiles and experimental clothing. Each piece is a collaboration between human intention and natural light.</p>
+                    <p>Creative, digital marketing, and experiential growth agency transforming café culture in Bengaluru.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Navigate</h4>
                     <ul>
-                        <li><a href="#" onclick="navigateTo('shop'); return false;">Shop</a></li>
-                        <li><a href="#" onclick="navigateTo('process'); return false;">Process</a></li>
-                        <li><a href="#" onclick="navigateTo('about'); return false;">About</a></li>
+                        <li><a href="#" onclick="navigateTo('shop'); return false;">Retainers</a></li>
+                        <li><a href="#" onclick="navigateTo('process'); return false;">Services</a></li>
+                        <li><a href="#" onclick="navigateTo('about'); return false;">Leadership</a></li>
                         <li><a href="#" onclick="navigateTo('contact'); return false;">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Connect</h4>
                     <ul>
-                        <li><a href="https://instagram.com/paperfortune" target="_blank">Instagram</a></li>
-                        <li><a href="https://wa.me/1234567890" target="_blank">WhatsApp</a></li>
-                        <li><a href="mailto:hello@paperfortune.studio">Email</a></li>
+                        <li><a href="https://wa.me/?text=Hi%20PPAPERFORTUNE" target="_blank">WhatsApp</a></li>
+                        <li><a href="https://ppaperfortune.in">ppaperfortune.in</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Paper Fortune. All rights reserved.</p>
+                <p>© 2026 PPAPERFORTUNE. All rights reserved.</p>
                 <div class="social-links">
-                    <a href="https://instagram.com/paperfortune" target="_blank">Instagram</a>
-                    <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+                    <a href="https://wa.me/?text=Hi%20PPAPERFORTUNE" target="_blank">WhatsApp</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Product Data
+        // Product / Retainer Data
         const products = {
-            'botanical-tote': {
-                name: 'Botanical Tote',
-                poetic: 'Pressed ferns collected from the forest floor, their fronds preserved in Prussian blue on heavy organic cotton. A bag that carries both your belongings and a moment of stillness.',
-                price: '$85.00',
-                material: 'Organic cotton canvas',
-                dims: '42 x 38 cm',
-                edition: 'One of a kind',
-                image: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=1000&q=80'
+            'starter-vibe': {
+                name: 'Tier 1: Starter Vibe',
+                poetic: 'Essential visual presence & local search footprint engineered for emerging cafés near Presidency University.',
+                price: '₹12,000 – ₹15,000 / mo',
+                material: '8 Reels + 1 Photoshoot Session',
+                dims: '1 On-Site Shoot Session / month',
+                edition: '3-Month Initial Agreement',
+                image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1000&q=80'
             },
-            'shadow-scarf': {
-                name: 'Shadow Scarf',
-                poetic: 'Wild botanical silhouettes float across silk crepe de chine like shadows caught at golden hour. Light as air, yet saturated with the memory of sunlight.',
-                price: '$120.00',
-                material: 'Silk crepe de chine',
-                dims: '180 x 70 cm',
-                edition: 'Limited to 8 pieces',
-                image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=1000&q=80'
+            'growth-reach': {
+                name: 'Tier 2: Growth & Reach',
+                poetic: 'Our most popular retainer package. Delivers 3 reels per week, active DM management, local creator visits, and a complimentary Digital Menu Website.',
+                price: '₹20,000 – ₹25,000 / mo',
+                material: '12 Reels + 2 Shoots + Influencer Visit',
+                dims: '2 On-Site Shoot Sessions / month',
+                edition: 'Includes FREE Menu Website',
+                image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80'
             },
-            'archive-shirt': {
-                name: 'Archive Shirt',
-                poetic: 'Hand-coated linen in our signature deep indigo. Each shirt carries brush marks from the coating process — evidence of human touch in every thread.',
-                price: '$195.00',
-                material: 'Belgian linen',
-                dims: 'S, M, L available',
-                edition: 'Edition of 12',
-                image: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=1000&q=80'
+            'full-experiential': {
+                name: 'Tier 3: Full Experiential',
+                poetic: 'Complete market domination. Combines 20 reels per month, weekly photo sessions, Google Maps review systems, and monthly live acoustic/open mic activations.',
+                price: '₹35,000 – ₹40,000 / mo',
+                material: '20 Reels + Weekly Shoots + Live Event',
+                dims: 'Weekly Shoot Sessions',
+                edition: 'Full Experiential Partner',
+                image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1000&q=80'
             },
-            'paper-obj': {
-                name: 'Paper Object No. 7',
-                poetic: 'Cyanotype on handmade washi paper, mounted on raw cotton. A textile artwork that blurs the boundary between paper and fabric, between image and object.',
-                price: '$75.00',
-                material: 'Washi paper & cotton',
-                dims: '30 x 40 cm',
-                edition: 'One of a kind',
-                image: 'https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=1000&q=80'
+            'digital-menu': {
+                name: 'Digital Menu & Table QR Setup',
+                poetic: 'Custom high-speed mobile website featuring your café menu, location map, and direct WhatsApp / delivery integration via on-table QR codes.',
+                price: '₹10,000 (One-Time)',
+                material: 'Mobile Web App + Table QR Codes',
+                dims: 'Responsive Mobile Layout',
+                edition: 'One-Time Setup Fee',
+                image: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1000&q=80'
             }
         };
 
@@ -1785,7 +1770,7 @@
             menu.classList.toggle('open');
         }
 
-        // Product Detail
+        // Product Detail / Retainer View
         function showProduct(productId) {
             const product = products[productId];
             if (!product) return;
@@ -1814,11 +1799,10 @@
         function orderViaWhatsApp() {
             if (!currentProduct) return;
             
-            const phone = '1234567890'; // Replace with actual WhatsApp number
-            const message = `Hello Paper Fortune,\n\nI would like to order:\n• ${currentProduct.name}\n• Quantity: ${currentQty}\n• Price: ${currentProduct.price}\n\nPlease let me know the next steps.`;
+            const message = `Hello PPAPERFORTUNE Team,\n\nWe are interested in discussing the following retainer package:\n• Package: ${currentProduct.name}\n• Duration: ${currentQty} month(s)\n• Investment: ${currentProduct.price}\n\nPlease let us know when we can schedule an on-site strategy meeting at our cafe.`;
             
             const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
+            window.open(`https://wa.me/?text=${encoded}`, '_blank');
         }
 
         // Scroll Reveal
@@ -1855,11 +1839,6 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             initReveal();
-            
-            // Handle browser back/forward
-            window.addEventListener('popstate', () => {
-                // Simple hash-based routing could be added here
-            });
         });
 
         // Smooth scroll for anchor links
