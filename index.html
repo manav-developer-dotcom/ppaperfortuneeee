@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Fortune — Sun Printed Textiles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --indigo: #1a1a2e;
+            --indigo-light: #16213e;
+            --off-white: #f5f2ed;
+            --paper: #e8e2d9;
+            --charcoal: #0f0f0f;
+            --gray-warm: #8a8279;
+            --gray-light: #c4bdb3;
+            --accent-blue: #2e4a62;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--off-white);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--off-white);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-light);
+            border-radius: 3px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .logo-script {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            background: transparent;
+        }
+
+        .nav-container.scrolled {
+            background: rgba(245, 242, 237, 0.92);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 3rem;
+            box-shadow: 0 1px 20px rgba(0,0,0,0.04);
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-logo .logo-text {
+            color: var(--off-white);
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+        }
+
+        .nav-logo .logo-script {
+            color: var(--off-white);
+            font-size: 0.75rem;
+            margin-top: -2px;
+        }
+
+        .nav-container.scrolled .nav-logo .logo-text,
+        .nav-container.scrolled .nav-logo .logo-script {
+            color: var(--charcoal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--off-white);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-container.scrolled .nav-links a {
+            color: var(--charcoal);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--charcoal);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 1px;
+            background: var(--off-white);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container.scrolled .mobile-menu-btn span {
+            background: var(--charcoal);
+        }
+
+        /* Page Sections */
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--charcoal);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            opacity: 1;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(46, 74, 98, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(26, 26, 46, 0.3) 0%, transparent 50%);
+            animation: heroPulse 12s ease-in-out infinite;
+        }
+
+        @keyframes heroPulse {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-2%, -2%) scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--off-white);
+        }
+
+        .hero-logo {
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .hero-logo .logo-text {
+            font-size: 3.5rem;
+            letter-spacing: 0.5em;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-logo .logo-script {
+            font-size: 1.8rem;
+            display: block;
+            color: var(--gray-light);
+        }
+
+        .hero-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-light);
+            opacity: 0;
+            animation: fadeInUp 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 1s 1.2s ease forwards;
+        }
+
+        .hero-scroll span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-warm);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gray-warm), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray-warm);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--charcoal);
+        }
+
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--gray-warm);
+            margin-top: 1rem;
+            font-weight: 400;
+        }
+
+        /* Featured Works */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .work-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--paper);
+            aspect-ratio: 3/4;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .work-card:nth-child(2) {
+            margin-top: 4rem;
+        }
+
+        .work-card:nth-child(3) {
+            margin-top: 2rem;
+        }
+
+        .work-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+            filter: grayscale(20%) contrast(1.05);
+        }
+
+        .work-card:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .work-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(15,15,15,0.8), transparent);
+            color: var(--off-white);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .work-card:hover .work-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .work-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+
+        .work-desc {
+            font-size: 0.8rem;
+            color: var(--gray-light);
+            font-style: italic;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: var(--charcoal);
+            color: var(--off-white);
+            padding: 8rem 0;
+        }
+
+        .process-section .section-title {
+            color: var(--off-white);
+        }
+
+        .process-section .section-label {
+            color: var(--gray-warm);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            right: -1rem;
+            width: 2rem;
+            height: 1px;
+            background: var(--gray-warm);
+            opacity: 0.3;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+            line-height: 1;
+        }
+
+        .step-title {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--off-white);
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--gray-warm);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Philosophy */
+        .philosophy {
+            padding: 10rem 0;
+            background: var(--paper);
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .philosophy-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: var(--charcoal);
+            font-style: italic;
+        }
+
+        .philosophy-text p {
+            margin-bottom: 2rem;
+        }
+
+        .philosophy-signature {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-warm);
+        }
+
+        /* Shop Page */
+        .shop-hero {
+            height: 60vh;
+            background: var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shop-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(46, 74, 98, 0.2) 0%, transparent 70%);
+        }
+
+        .shop-hero-content {
+            text-align: center;
+            color: var(--off-white);
+            position: relative;
+            z-index: 2;
+        }
+
+        .shop-hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .shop-hero-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--gray-light);
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            padding: 6rem 0;
+        }
+
+        .product-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-image {
+            aspect-ratio: 4/5;
+            background: var(--paper);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.03);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: var(--off-white);
+            color: var(--charcoal);
+            padding: 0.4rem 1rem;
+            z-index: 2;
+        }
+
+        .product-details h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .product-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--gray-warm);
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        /* Product Detail Page */
+        .product-detail {
+            padding-top: 0;
+        }
+
+        .product-detail-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .product-gallery {
+            background: var(--paper);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info-panel {
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--off-white);
+        }
+
+        .product-info-panel .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray-warm);
+            text-decoration: none;
+            margin-bottom: 3rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+
+        .product-info-panel .back-btn:hover {
+            color: var(--charcoal);
+        }
+
+        .product-info-panel h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .product-info-panel .poetic-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--gray-warm);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .product-meta {
+            margin: 2rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--paper);
+            border-bottom: 1px solid var(--paper);
+        }
+
+        .meta-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            font-size: 0.85rem;
+        }
+
+        .meta-label {
+            color: var(--gray-warm);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        .meta-value {
+            color: var(--charcoal);
+            font-weight: 400;
+        }
+
+        .order-section {
+            margin-top: 2rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--paper);
+            background: transparent;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            background: var(--charcoal);
+            color: var(--off-white);
+            border-color: var(--charcoal);
+        }
+
+        .qty-value {
+            font-size: 1rem;
+            font-weight: 500;
+            min-width: 2rem;
+            text-align: center;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--charcoal);
+            color: var(--off-white);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--indigo);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .care-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--paper);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--gray-warm);
+        }
+
+        .care-note strong {
+            color: var(--charcoal);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* About Page */
+        .about-hero {
+            height: 70vh;
+            background: var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .about-hero-content {
+            max-width: 700px;
+            text-align: center;
+            color: var(--off-white);
+            padding: 0 2rem;
+        }
+
+        .about-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .about-hero-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--gray-light);
+            font-weight: 300;
+        }
+
+        .about-content {
+            padding: 6rem 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+
+        .about-grid.reverse {
+            direction: rtl;
+        }
+
+        .about-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .about-image {
+            aspect-ratio: 4/5;
+            background: var(--paper);
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: filter 0.6s ease;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--gray-warm);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* Process/Care Page */
+        .process-page-hero {
+            background: var(--indigo);
+            color: var(--off-white);
+            padding: 10rem 0 6rem;
+            text-align: center;
+        }
+
+        .process-page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-page-hero p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--gray-light);
+        }
+
+        .process-detail {
+            padding: 6rem 0;
+        }
+
+        .process-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .process-detail-item {
+            padding: 3rem;
+            background: var(--paper);
+        }
+
+        .process-detail-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .process-detail-item p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--gray-warm);
+            font-weight: 300;
+        }
+
+        .care-section {
+            background: var(--charcoal);
+            color: var(--off-white);
+            padding: 6rem 0;
+        }
+
+        .care-section .section-title {
+            color: var(--off-white);
+        }
+
+        .care-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .care-card {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .care-card:hover {
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .care-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .care-card h4 {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .care-card p {
+            font-size: 0.85rem;
+            color: var(--gray-warm);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: var(--off-white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo-text {
+            color: var(--off-white);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .footer-brand .logo-script {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--gray-warm);
+            line-height: 1.6;
+            max-width: 300px;
+            font-weight: 300;
+        }
+
+        .footer-links h4 {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--gray-light);
+            font-weight: 500;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-warm);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--off-white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: var(--gray-warm);
+            letter-spacing: 0.1em;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--gray-warm);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--off-white);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--charcoal);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .works-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .process-step:nth-child(3)::after {
+                display: none;
+            }
+            .care-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .product-detail-hero {
+                grid-template-columns: 1fr;
+            }
+            .about-grid, .about-grid.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+            .about-grid.reverse > * {
+                direction: ltr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+            .hero-logo .logo-text {
+                font-size: 2rem;
+                letter-spacing: 0.3em;
+            }
+            .hero-logo .logo-script {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+            .work-card:nth-child(2),
+            .work-card:nth-child(3) {
+                margin-top: 0;
+            }
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .process-step::after {
+                display: none;
+            }
+            .shop-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .care-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .container {
+                padding: 0 1.5rem;
+            }
+            .nav-container {
+                padding: 1.5rem;
+            }
+            .nav-container.scrolled {
+                padding: 1rem 1.5rem;
+            }
+            .product-info-panel {
+                padding: 3rem 1.5rem;
+            }
+            .process-detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cart Badge */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent-blue);
+            color: var(--off-white);
+            border-radius: 50%;
+            font-size: 0.65rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+
+        /* Loading State */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--charcoal);
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .page-transition.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#" onclick="navigateTo('home'); return false;">Home</a>
+        <a href="#" onclick="navigateTo('shop'); return false;">Shop</a>
+        <a href="#" onclick="navigateTo('process'); return false;">Process</a>
+        <a href="#" onclick="navigateTo('about'); return false;">About</a>
+        <a href="#" onclick="navigateTo('contact'); return false;">Contact</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container" id="navbar">
+        <div class="nav-logo" onclick="navigateTo('home')">
+            <span class="logo-text">Paper</span>
+            <span class="logo-script">Fortune</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="navigateTo('home'); return false;">Home</a></li>
+            <li><a href="#" onclick="navigateTo('shop'); return false;">Shop</a></li>
+            <li><a href="#" onclick="navigateTo('process'); return false;">Process</a></li>
+            <li><a href="#" onclick="navigateTo('about'); return false;">About</a></li>
+            <li><a href="#" onclick="navigateTo('contact'); return false;">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div class="page active" id="page-home">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <span class="logo-text">Paper</span>
+                    <span class="logo-script">Fortune</span>
+                </div>
+                <p class="hero-tagline">Objects Exposed By Light</p>
+            </div>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- Featured Works -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Selected Works</span>
+                    <h2 class="section-title">The Archive</h2>
+                    <p class="section-subtitle">One-of-a-kind cyanotype textiles, sun-printed by hand</p>
+                </div>
+                <div class="works-grid">
+                    <div class="work-card reveal" onclick="showProduct('botanical-tote')">
+                        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80" alt="Botanical Tote">
+                        <div class="work-info">
+                            <h3 class="work-title">Botanical Tote</h3>
+                            <p class="work-desc">Fern impressions on organic cotton</p>
+                        </div>
+                    </div>
+                    <div class="work-card reveal" onclick="showProduct('shadow-scarf')">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80" alt="Shadow Scarf">
+                        <div class="work-info">
+                            <h3 class="work-title">Shadow Scarf</h3>
+                            <p class="work-desc">Silk crepe de chine, leaf silhouettes</p>
+                        </div>
+                    </div>
+                    <div class="work-card reveal" onclick="showProduct('archive-shirt')">
+                        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80" alt="Archive Shirt">
+                        <div class="work-info">
+                            <h3 class="work-title">Archive Shirt</h3>
+                            <p class="work-desc">Limited edition, hand-coated linen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">The Method</span>
+                    <h2 class="section-title">From Light to Fabric</h2>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step reveal">
+                        <div class="step-number">01</div>
+                        <h4 class="step-title">Coating</h4>
+                        <p class="step-desc">Light-sensitive emulsion hand-brushed onto fabric in dim light</p>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="step-number">02</div>
+                        <h4 class="step-title">Placement</h4>
+                        <p class="step-desc">Botanicals and objects arranged with intention and care</p>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="step-number">03</div>
+                        <h4 class="step-title">Exposure</h4>
+                        <p class="step-desc">Sunlight imprints shadows and forms onto the prepared surface</p>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="step-number">04</div>
+                        <h4 class="step-title">Washing</h4>
+                        <p class="step-desc">Water reveals the Prussian blue, fixing the image forever</p>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="step-number">05</div>
+                        <h4 class="step-title">Oxidation</h4>
+                        <p class="step-desc">Air and time deepen the blue to its final, living shade</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="philosophy">
+            <div class="container">
+                <div class="philosophy-content reveal">
+                    <div class="philosophy-text">
+                        <p>Every piece carries the memory of a specific day — the quality of light, the humidity in the air, the particular fall of a shadow. We do not chase perfection. We chase presence.</p>
+                        <p>Each textile is a collaboration between human intention and natural unpredictability. The sun decides; we merely prepare the canvas.</p>
+                    </div>
+                    <div class="philosophy-signature">Slow Made • Small Batch • Sun Printed</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instagram -->
+        <section class="section" style="padding-bottom: 4rem;">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Journal</span>
+                    <h2 class="section-title">@paperfortune</h2>
+                    <p class="section-subtitle">Behind the scenes in our studio</p>
+                </div>
+                <div class="works-grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                    <div class="work-card reveal" style="aspect-ratio: 1;">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&q=80" alt="Studio">
+                    </div>
+                    <div class="work-card reveal" style="aspect-ratio: 1;">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Fabric">
+                    </div>
+                    <div class="work-card reveal" style="aspect-ratio: 1;">
+                        <img src="https://images.unsplash.com/photo-1493934558415-9d19f0b2b4d2?w=600&q=80" alt="Botanicals">
+                    </div>
+                    <div class="work-card reveal" style="aspect-ratio: 1;">
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=600&q=80" alt="Light">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SHOP PAGE -->
+    <div class="page" id="page-shop">
+        <div class="shop-hero">
+            <div class="shop-hero-content">
+                <h1>The Collection</h1>
+                <p>Curated pieces, each one unique</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="shop-grid">
+                <div class="product-card reveal" onclick="showProduct('botanical-tote')">
+                    <div class="product-image">
+                        <span class="product-tag">New</span>
+                        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80" alt="Botanical Tote">
+                    </div>
+                    <div class="product-details">
+                        <h3>Botanical Tote</h3>
+                        <p class="product-desc">Pressed ferns on heavy organic cotton</p>
+                        <span class="product-price">$85.00</span>
+                    </div>
+                </div>
+                <div class="product-card reveal" onclick="showProduct('shadow-scarf')">
+                    <div class="product-image">
+                        <span class="product-tag">Limited</span>
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80" alt="Shadow Scarf">
+                    </div>
+                    <div class="product-details">
+                        <h3>Shadow Scarf</h3>
+                        <p class="product-desc">Silk crepe with wild botanical silhouettes</p>
+                        <span class="product-price">$120.00</span>
+                    </div>
+                </div>
+                <div class="product-card reveal" onclick="showProduct('archive-shirt')">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80" alt="Archive Shirt">
+                    </div>
+                    <div class="product-details">
+                        <h3>Archive Shirt</h3>
+                        <p class="product-desc">Hand-coated linen, edition of 12</p>
+                        <span class="product-price">$195.00</span>
+                    </div>
+                </div>
+                <div class="product-card reveal" onclick="showProduct('paper-obj')">
+                    <div class="product-image">
+                        <span class="product-tag">One-off</span>
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=800&q=80" alt="Paper Object">
+                    </div>
+                    <div class="product-details">
+                        <h3>Paper Object No. 7</h3>
+                        <p class="product-desc">Cyanotype on handmade washi paper</p>
+                        <span class="product-price">$75.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL PAGE -->
+    <div class="page" id="page-product">
+        <div class="product-detail">
+            <div class="product-detail-hero">
+                <div class="product-gallery">
+                    <img id="product-img" src="" alt="">
+                </div>
+                <div class="product-info-panel">
+                    <button class="back-btn" onclick="navigateTo('shop')">← Back to Collection</button>
+                    <h1 id="product-name">Product Name</h1>
+                    <p class="poetic-desc" id="product-poetic">Description</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Material</span>
+                            <span class="meta-value" id="product-material">Cotton</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Process</span>
+                            <span class="meta-value">Cyanotype on fabric</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Dimensions</span>
+                            <span class="meta-value" id="product-dims">40 x 40 cm</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Edition</span>
+                            <span class="meta-value" id="product-edition">One of a kind</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Price</span>
+                            <span class="meta-value" id="product-price">$0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="order-section">
+                        <div class="quantity-selector">
+                            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+                            <span class="qty-value" id="qty">1</span>
+                            <button class="qty-btn" onclick="changeQty(1)">+</button>
+                        </div>
+                        <button class="whatsapp-btn" onclick="orderViaWhatsApp()">
+                            Order via WhatsApp
+                        </button>
+                    </div>
+
+                    <div class="care-note">
+                        <strong>Living Print</strong>
+                        This piece will evolve over time. The blue may gently soften with washes and sun exposure — this is the natural character of cyanotype, not a flaw. Each fade tells the story of its life with you.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div class="page" id="page-about">
+        <div class="about-hero">
+            <div class="about-hero-content">
+                <h1>The Studio</h1>
+                <p>We work with sunlight as our primary medium, allowing the unpredictable nature of exposure to guide each piece toward its final form.</p>
+            </div>
+        </div>
+        <div class="container about-content">
+            <div class="about-grid reveal">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&q=80" alt="Studio Process">
+                </div>
+                <div class="about-text">
+                    <h3>Sun as Printer</h3>
+                    <p>The cyanotype process was invented in 1842 by Sir John Herschel. We have adapted this photographic technique to textiles, creating wearable blueprints that carry the ghost of botanical forms.</p>
+                    <p>Each morning, we coat fabric with iron salts in near-darkness. By afternoon, the sun has done its work. By evening, water reveals what light has written.</p>
+                </div>
+            </div>
+            <div class="about-grid reverse reveal">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=800&q=80" alt="Botanicals">
+                </div>
+                <div class="about-text">
+                    <h3>Botanical Collaboration</h3>
+                    <p>We collect specimens during specific seasons — ferns in spring, seed heads in autumn, eucalyptus year-round. Each plant leaves its signature differently depending on the day's UV intensity.</p>
+                    <p>The arrangement is never fully controlled. Wind shifts a leaf. A cloud passes. These accidents become the most beautiful passages.</p>
+                </div>
+            </div>
+            <div class="about-grid reveal">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1493934558415-9d19f0b2b4d2?w=800&q=80" alt="Textile">
+                </div>
+                <div class="about-text">
+                    <h3>Imperfection as Value</h3>
+                    <p>In an age of mass production, we choose slowness. A single piece may take three days from coating to finished object. We embrace the brush marks, the uneven edges, the slight variations that prove human hands were involved.</p>
+                    <p>No two pieces will ever be identical. Even if we tried, the sun would refuse to cooperate.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROCESS / CARE PAGE -->
+    <div class="page" id="page-process">
+        <div class="process-page-hero">
+            <div class="container">
+                <span class="section-label" style="color: var(--gray-warm);">Understanding the Medium</span>
+                <h1>Cyanotype & Care</h1>
+                <p>A living process that continues to breathe after it leaves our studio</p>
+            </div>
+        </div>
+        <div class="container process-detail">
+            <div class="process-detail-grid">
+                <div class="process-detail-item reveal">
+                    <h3>What is Cyanotype?</h3>
+                    <p>A photographic printing process that produces a cyan-blue print. The technique uses a mixture of iron compounds, which when exposed to UV light and washed in water, create the distinctive Prussian blue pigment. Invented in 1842, it was originally used to reproduce notes and diagrams — hence "blueprint."</p>
+                </div>
+                <div class="process-detail-item reveal">
+                    <h3>Why Every Piece is Unique</h3>
+                    <p>Sun intensity, humidity, cloud cover, and the specific chemistry of each coating session all influence the final result. We cannot replicate conditions exactly, even if we wished to. This means your piece is truly one-of-a-kind, carrying the specific atmospheric conditions of its creation day.</p>
+                </div>
+            </div>
+            <div class="process-detail-grid">
+                <div class="process-detail-item reveal">
+                    <h3>The Beauty of Fading</h3>
+                    <p>Cyanotype is light-sensitive by nature. Prolonged exposure to strong direct sunlight will gradually soften the blue. We view this not as degradation, but as evolution — the textile developing a patina that reflects its life with you. Many collectors specifically seek out the softer, weathered tones that develop over years.</p>
+                </div>
+                <div class="process-detail-item reveal">
+                    <h3>Restoring the Blue</h3>
+                    <p>If you wish to temporarily deepen the color, storing the piece in a dark drawer for several days will allow the blue to regenerate. This reversibility is part of cyanotype's magic — it is never truly finished, always in dialogue with its environment.</p>
+                </div>
+            </div>
+        </div>
+        <div class="care-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label" style="color: var(--gray-warm);">Preservation</span>
+                    <h2 class="section-title">Care Instructions</h2>
+                </div>
+                <div class="care-grid">
+                    <div class="care-card reveal">
+                        <div class="care-icon">◦</div>
+                        <h4>Cold Wash</h4>
+                        <p>Hand wash or machine wash on cold gentle cycle. Hot water will accelerate fading.</p>
+                    </div>
+                    <div class="care-card reveal">
+                        <div class="care-icon">◦</div>
+                        <h4>Gentle Detergent</h4>
+                        <p>Use pH-neutral soap. Avoid bleach, optical brighteners, and harsh chemicals entirely.</p>
+                    </div>
+                    <div class="care-card reveal">
+                        <div class="care-icon">◦</div>
+                        <h4>Shade Dry</h4>
+                        <p>Dry flat in shade. Direct sun during drying will cause immediate color shift.</p>
+                    </div>
+                    <div class="care-card reveal">
+                        <div class="care-icon">◦</div>
+                        <h4>Store Dark</h4>
+                        <p>When not in use, store away from direct sunlight to preserve the depth of blue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div class="page" id="page-contact">
+        <div class="about-hero" style="height: 50vh;">
+            <div class="about-hero-content">
+                <h1>Get in Touch</h1>
+                <p>Every inquiry begins a conversation</p>
+            </div>
+        </div>
+        <div class="container" style="padding: 6rem 0; max-width: 600px; text-align: center;">
+            <div class="reveal">
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; line-height: 1.8; color: var(--gray-warm); margin-bottom: 3rem; font-style: italic;">
+                    For orders, custom commissions, or simply to say hello — we read every message and respond within 24 hours.
+                </p>
+                <div style="margin-bottom: 2rem;">
+                    <span style="display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-warm); margin-bottom: 0.5rem;">WhatsApp</span>
+                    <a href="https://wa.me/1234567890" style="font-size: 1.1rem; color: var(--charcoal); text-decoration: none; font-weight: 500;">+1 (234) 567-890</a>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <span style="display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-warm); margin-bottom: 0.5rem;">Email</span>
+                    <a href="mailto:hello@paperfortune.studio" style="font-size: 1.1rem; color: var(--charcoal); text-decoration: none; font-weight: 500;">hello@paperfortune.studio</a>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <span style="display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-warm); margin-bottom: 0.5rem;">Studio</span>
+                    <span style="font-size: 1rem; color: var(--charcoal);">Based in the Pacific Northwest</span>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <a href="https://instagram.com/paperfortune" style="display: inline-block; padding: 1rem 2rem; border: 1px solid var(--paper); color: var(--charcoal); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s ease;">Follow @paperfortune</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Paper</span>
+                    <span class="logo-script">Fortune</span>
+                    <p>Sun-printed textiles and experimental clothing. Each piece is a collaboration between human intention and natural light.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('shop'); return false;">Shop</a></li>
+                        <li><a href="#" onclick="navigateTo('process'); return false;">Process</a></li>
+                        <li><a href="#" onclick="navigateTo('about'); return false;">About</a></li>
+                        <li><a href="#" onclick="navigateTo('contact'); return false;">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://instagram.com/paperfortune" target="_blank">Instagram</a></li>
+                        <li><a href="https://wa.me/1234567890" target="_blank">WhatsApp</a></li>
+                        <li><a href="mailto:hello@paperfortune.studio">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Paper Fortune. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/paperfortune" target="_blank">Instagram</a>
+                    <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = {
+            'botanical-tote': {
+                name: 'Botanical Tote',
+                poetic: 'Pressed ferns collected from the forest floor, their fronds preserved in Prussian blue on heavy organic cotton. A bag that carries both your belongings and a moment of stillness.',
+                price: '$85.00',
+                material: 'Organic cotton canvas',
+                dims: '42 x 38 cm',
+                edition: 'One of a kind',
+                image: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=1000&q=80'
+            },
+            'shadow-scarf': {
+                name: 'Shadow Scarf',
+                poetic: 'Wild botanical silhouettes float across silk crepe de chine like shadows caught at golden hour. Light as air, yet saturated with the memory of sunlight.',
+                price: '$120.00',
+                material: 'Silk crepe de chine',
+                dims: '180 x 70 cm',
+                edition: 'Limited to 8 pieces',
+                image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=1000&q=80'
+            },
+            'archive-shirt': {
+                name: 'Archive Shirt',
+                poetic: 'Hand-coated linen in our signature deep indigo. Each shirt carries brush marks from the coating process — evidence of human touch in every thread.',
+                price: '$195.00',
+                material: 'Belgian linen',
+                dims: 'S, M, L available',
+                edition: 'Edition of 12',
+                image: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=1000&q=80'
+            },
+            'paper-obj': {
+                name: 'Paper Object No. 7',
+                poetic: 'Cyanotype on handmade washi paper, mounted on raw cotton. A textile artwork that blurs the boundary between paper and fabric, between image and object.',
+                price: '$75.00',
+                material: 'Washi paper & cotton',
+                dims: '30 x 40 cm',
+                edition: 'One of a kind',
+                image: 'https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=1000&q=80'
+            }
+        };
+
+        let currentQty = 1;
+        let currentProduct = null;
+
+        // Navigation
+        function navigateTo(page) {
+            const transition = document.getElementById('pageTransition');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            // Close mobile menu if open
+            mobileMenu.classList.remove('open');
+            
+            // Transition effect
+            transition.classList.add('active');
+            
+            setTimeout(() => {
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(p => {
+                    p.classList.remove('active');
+                });
+                
+                // Show target page
+                const target = document.getElementById('page-' + page);
+                if (target) {
+                    target.classList.add('active');
+                    window.scrollTo(0, 0);
+                }
+                
+                // Update nav state
+                updateNavState(page === 'home');
+                
+                setTimeout(() => {
+                    transition.classList.remove('active');
+                    initReveal();
+                }, 300);
+            }, 400);
+        }
+
+        function updateNavState(isHome) {
+            const nav = document.getElementById('navbar');
+            if (isHome) {
+                nav.classList.remove('scrolled');
+            } else {
+                nav.classList.add('scrolled');
+            }
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        // Product Detail
+        function showProduct(productId) {
+            const product = products[productId];
+            if (!product) return;
+            
+            currentProduct = product;
+            currentQty = 1;
+            
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-poetic').textContent = product.poetic;
+            document.getElementById('product-price').textContent = product.price;
+            document.getElementById('product-material').textContent = product.material;
+            document.getElementById('product-dims').textContent = product.dims;
+            document.getElementById('product-edition').textContent = product.edition;
+            document.getElementById('product-img').src = product.image;
+            document.getElementById('product-img').alt = product.name;
+            document.getElementById('qty').textContent = currentQty;
+            
+            navigateTo('product');
+        }
+
+        function changeQty(delta) {
+            currentQty = Math.max(1, currentQty + delta);
+            document.getElementById('qty').textContent = currentQty;
+        }
+
+        function orderViaWhatsApp() {
+            if (!currentProduct) return;
+            
+            const phone = '1234567890'; // Replace with actual WhatsApp number
+            const message = `Hello Paper Fortune,\n\nI would like to order:\n• ${currentProduct.name}\n• Quantity: ${currentQty}\n• Price: ${currentProduct.price}\n\nPlease let me know the next steps.`;
+            
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
+        }
+
+        // Scroll Reveal
+        function initReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            reveals.forEach(el => {
+                el.classList.remove('visible');
+                observer.observe(el);
+            });
+        }
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const homePage = document.getElementById('page-home');
+            
+            if (homePage.classList.contains('active')) {
+                if (window.scrollY > 100) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initReveal();
+            
+            // Handle browser back/forward
+            window.addEventListener('popstate', () => {
+                // Simple hash-based routing could be added here
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
