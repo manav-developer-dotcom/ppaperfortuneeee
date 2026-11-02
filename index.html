@@ -6,7 +6,7 @@
     <title>PPAPERFORTUNE — Creative, Digital & Experiential Growth Agency</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --indigo: #1e2421;
@@ -1227,7 +1227,361 @@
         .page-transition.active {
             opacity: 1;
         }
-    </style>
+    
+/* ===== Colour grade: warm espresso + antique gold ===== */
+:root {
+  --indigo: #1a130e;
+  --indigo-light: #2a1f17;
+  --off-white: #fbf7f0;
+  --paper: #f1e6d4;
+  --charcoal: #16100c;
+  --gray-warm: #bfae98;     /* soft taupe for text on dark */
+  --gray-light: #e3d6c3;
+  --accent-blue: #a8672a;   /* deep copper: readable on cream */
+  --gold: #d4a85f;          /* bright gold for dark sections */
+  --muted: #6e5f50;         /* readable body text on light */
+}
+::-webkit-scrollbar-thumb { background: #d8c6a8; }
+
+.hero-bg { background: linear-gradient(135deg, #120d0a 0%, #1f1610 50%, #33241a 100%); }
+.hero-bg::before {
+  background: radial-gradient(circle at 30% 50%, rgba(212,168,95,.18) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(90,55,30,.35) 0%, transparent 50%);
+}
+.shop-hero::before { background: radial-gradient(circle at 50% 50%, rgba(212,168,95,.22) 0%, transparent 70%); }
+.nav-container.scrolled { background: rgba(251,247,240,.94); }
+.work-info { background: linear-gradient(to top, rgba(22,16,12,.95), transparent); }
+.care-card:hover { border-color: rgba(212,168,95,.45); }
+
+/* Fix low-contrast grey text on light backgrounds */
+.section-subtitle, .product-desc, .product-info-panel .poetic-desc,
+.about-text p, .process-detail-item p, .care-note, .meta-label,
+.product-info-panel .back-btn, #page-contact .container p { color: var(--muted) !important; }
+
+/* Gold accents on dark sections */
+.process-section .section-label, .care-section .section-label,
+.step-number, .care-icon, .philosophy-signature { color: var(--gold); }
+.philosophy-signature { color: var(--accent-blue); }
+
+/* Consistent warm grade on all photography */
+.work-card img, .about-image img, .product-image img, .product-gallery img {
+  filter: sepia(.14) saturate(1.08) contrast(1.05) brightness(.97);
+}
+.work-card:hover img, .about-image:hover img {
+  filter: sepia(.06) saturate(1.12) contrast(1.02);
+}
+
+/* ===== "Fortune": cursive, lavish gold script (nav, hero, footer) ===== */
+.logo-script {
+  font-family: 'Pinyon Script', 'Playfair Display', cursive;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: .02em;
+  padding: .1em .2em;
+  background-image: linear-gradient(100deg, #f3dfae 0%, #d4a85f 40%, #f6e6bd 62%, #b98a3e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(212,168,95,.35));
+}
+.nav-logo .logo-script { font-size: 1.6rem; margin-top: -8px; }
+.hero-logo .logo-script { font-size: 4.4rem; margin-top: -.6rem; }
+.footer-brand .logo-script { font-size: 2.2rem; margin-bottom: 1rem; }
+.nav-container.scrolled .nav-logo .logo-script {
+  background-image: linear-gradient(100deg, #b8863a, #8f5f1f 50%, #c99a4d);
+  filter: none;
+}
+@media (max-width: 768px) {
+  .hero-logo .logo-script { font-size: 3rem; }
+}
+
+
+
+/* =========================================================
+   PPAPERFORTUNE — premium brand refinement
+   Focus: precise logo alignment, restrained luxury palette,
+   editorial typography, consistent surfaces and photography.
+   ========================================================= */
+:root {
+  --indigo: #211811;
+  --indigo-light: #302319;
+  --off-white: #f8f5ef;
+  --paper: #eee5d8;
+  --charcoal: #1b1510;
+  --gray-warm: #b8a895;
+  --gray-light: #dfd3c4;
+  --accent-blue: #a97943;
+  --gold: #c7a36b;
+  --muted: #716252;
+  --espresso-deep: #17110d;
+  --espresso: #251a13;
+  --espresso-soft: #38281d;
+  --parchment: #f8f4ed;
+  --brass: #c5a06a;
+  --brass-light: #e2c99e;
+  --ink: #241b14;
+  --ink-soft: #625447;
+  --line-warm: rgba(91, 68, 45, .16);
+}
+
+/* Global colour consistency */
+html { background: var(--parchment); }
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  text-rendering: optimizeLegibility;
+}
+::selection { background: rgba(197,160,106,.28); color: var(--espresso-deep); }
+::-webkit-scrollbar-track { background: #eee6da; }
+::-webkit-scrollbar-thumb { background: #bca88d; border: 1px solid #eee6da; }
+
+/* Brand lockup: shared geometry across header, hero and footer */
+.logo-text,
+.logo-script {
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+.logo-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: .31em;
+  line-height: 1;
+  padding-left: .31em; /* optical centring compensates for tracking */
+  text-transform: uppercase;
+}
+.logo-script {
+  font-family: 'Pinyon Script', cursive;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: .015em;
+  line-height: .92;
+  padding: 0 .12em .12em;
+  background: linear-gradient(105deg, #f0dfbd 0%, #c9a36b 38%, #ead5ae 58%, #a77b45 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 2px 5px rgba(18,12,8,.18));
+}
+
+/* Navigation logo */
+.nav-container {
+  padding: 1.45rem clamp(1.25rem, 4.5vw, 4.25rem);
+}
+.nav-logo {
+  width: 148px;
+  min-width: 148px;
+  gap: .08rem;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+}
+.nav-logo .logo-text {
+  color: #f7f1e8;
+  font-size: .76rem;
+  letter-spacing: .28em;
+  padding-left: .28em;
+}
+.nav-logo .logo-script {
+  font-size: 2rem;
+  margin: -.08rem 0 0;
+  line-height: .8;
+}
+.nav-container.scrolled {
+  padding: .9rem clamp(1.25rem, 4.5vw, 4.25rem);
+  background: rgba(248,245,239,.96);
+  border-bottom: 1px solid rgba(92,69,45,.10);
+  box-shadow: 0 8px 30px rgba(35,25,17,.055);
+}
+.nav-container.scrolled .nav-logo .logo-text { color: var(--espresso); }
+.nav-container.scrolled .nav-logo .logo-script {
+  background-image: linear-gradient(105deg, #9b6d39, #c19a60 48%, #8f6334);
+  filter: none;
+}
+.nav-links { align-items: center; gap: clamp(1.2rem, 2.5vw, 2.5rem); }
+.nav-links a {
+  font-weight: 500;
+  letter-spacing: .13em;
+  transition: color .25s ease, opacity .25s ease;
+}
+.nav-container.scrolled .nav-links a { color: #403328; }
+.nav-container.scrolled .nav-links a:hover { color: #9b713f; }
+
+/* Hero: deep roasted-coffee tones with a subtle brass light source */
+.hero { background: var(--espresso-deep); }
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(121,82,48,.25), transparent 48%),
+    linear-gradient(118deg, #17110d 0%, #241910 48%, #302116 100%);
+}
+.hero-bg::before {
+  background:
+    radial-gradient(ellipse at 50% 43%, rgba(207,169,111,.17) 0%, transparent 43%),
+    radial-gradient(ellipse at 12% 88%, rgba(111,73,42,.18) 0%, transparent 42%),
+    linear-gradient(90deg, rgba(10,7,5,.18), transparent 50%, rgba(10,7,5,.12));
+  animation: none;
+}
+.hero-content { max-width: 980px; padding-inline: 2rem; }
+.hero-logo {
+  width: min(100%, 650px);
+  margin: 0 auto 2.15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+}
+.hero-logo .logo-text {
+  color: #f7f0e6;
+  font-size: clamp(2.2rem, 5.1vw, 4.15rem);
+  letter-spacing: .34em;
+  padding-left: .34em;
+  line-height: 1;
+}
+.hero-logo .logo-script {
+  font-size: clamp(3.3rem, 7.4vw, 5.7rem);
+  line-height: .78;
+  margin: -.08rem 0 .15rem;
+  filter: drop-shadow(0 3px 12px rgba(197,160,106,.17));
+}
+.hero-tagline {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #d8cabb;
+  font-size: clamp(1rem, 1.55vw, 1.35rem);
+  letter-spacing: .105em;
+  line-height: 1.65;
+}
+.hero-scroll { color: #cdbb9f; }
+.hero-scroll .scroll-line { background: linear-gradient(to bottom, #c5a06a, transparent); }
+
+/* More deliberate editorial hierarchy and warm neutral surfaces */
+.section { background: var(--parchment); }
+.section:nth-of-type(even) { background: #f1e9de; }
+.section-label {
+  color: #9a7145;
+  letter-spacing: .23em;
+  font-weight: 600;
+}
+.section-title {
+  color: #2b2018;
+  letter-spacing: -.025em;
+}
+.section-subtitle {
+  color: #756657 !important;
+  line-height: 1.8;
+}
+.work-card,
+.care-card,
+.product-info-panel,
+.process-detail-item {
+  border-color: var(--line-warm);
+}
+.work-card {
+  background: #e8ddce;
+  box-shadow: 0 12px 34px rgba(45,31,19,.07);
+}
+.work-info {
+  background: linear-gradient(to top, rgba(25,17,12,.94) 0%, rgba(25,17,12,.48) 58%, transparent 100%);
+}
+.care-card {
+  background: rgba(255,252,247,.72);
+  box-shadow: 0 10px 30px rgba(47,33,21,.035);
+}
+.care-card:hover {
+  border-color: rgba(173,132,78,.55);
+  box-shadow: 0 18px 38px rgba(47,33,21,.075);
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+
+/* Photography: cohesive warm editorial grade, not heavy sepia */
+.work-card img,
+.about-image img,
+.product-image img,
+.product-gallery img {
+  filter: sepia(.09) saturate(.91) contrast(1.055) brightness(.94);
+  transition: filter .65s ease, transform .8s cubic-bezier(.2,.65,.25,1);
+}
+.work-card:hover img,
+.about-image:hover img {
+  filter: sepia(.035) saturate(1.02) contrast(1.035) brightness(.99);
+}
+.product-gallery img { background: #e8ddce; }
+
+/* Footer: dark espresso, balanced gold wordmark */
+.footer {
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(145,103,59,.13), transparent 38%),
+    linear-gradient(135deg, #1a120d, #251a13 62%, #2c1f15);
+  border-top: 1px solid rgba(197,160,106,.18);
+}
+.footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
+.footer-brand .logo-text {
+  width: auto;
+  text-align: left;
+  color: #f4eee5;
+  font-size: .95rem;
+  letter-spacing: .3em;
+  padding-left: .3em;
+  margin-bottom: .05rem;
+}
+.footer-brand .logo-script {
+  width: auto;
+  text-align: left;
+  font-size: 2.65rem;
+  line-height: .8;
+  margin: 0 0 1.25rem -.06rem;
+}
+.footer-brand p { color: #c2b3a1; }
+.footer-links h4 { color: #d7c6ad; }
+.footer-links a { color: #b9a995; }
+.footer-links a:hover { color: #e0c18d; }
+
+/* Readable text on warm backgrounds */
+.product-desc,
+.product-info-panel .poetic-desc,
+.about-text p,
+.process-detail-item p,
+.care-note,
+.meta-label,
+.product-info-panel .back-btn,
+#page-contact .container p {
+  color: var(--ink-soft) !important;
+}
+
+/* Mobile: preserve the lockup proportions and prevent clipping */
+@media (max-width: 768px) {
+  .nav-container { padding: 1rem 1.15rem; }
+  .nav-container.scrolled { padding: .72rem 1.15rem; }
+  .nav-logo { width: 126px; min-width: 126px; }
+  .nav-logo .logo-text { font-size: .68rem; letter-spacing: .24em; padding-left: .24em; }
+  .nav-logo .logo-script { font-size: 1.75rem; }
+  .hero-content { padding-inline: 1.25rem; }
+  .hero-logo { margin-bottom: 1.55rem; }
+  .hero-logo .logo-text {
+    font-size: clamp(1.7rem, 8vw, 2.6rem);
+    letter-spacing: .25em;
+    padding-left: .25em;
+  }
+  .hero-logo .logo-script {
+    font-size: clamp(3.1rem, 15vw, 4.25rem);
+    margin-top: 0;
+  }
+  .hero-tagline { max-width: 34rem; font-size: 1rem; letter-spacing: .055em; }
+  .footer-brand .logo-script { font-size: 2.35rem; }
+}
+@media (max-width: 380px) {
+  .hero-logo .logo-text { font-size: 1.55rem; letter-spacing: .2em; padding-left: .2em; }
+  .hero-logo .logo-script { font-size: 2.9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-card img, .about-image img { transition: none; }
+}
+
+</style>
 </head>
 <body>
 
